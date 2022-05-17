@@ -8,7 +8,7 @@ class App {
     this.app.use(express.json());
   }
 
-  public startServer(PORT: String | number = 30001): void {
+  public startServer(PORT: String | number = 3001): void {
     this.app.listen(PORT, () => console.log(`Server running here http://localhost:${PORT}`));
   }
 }
