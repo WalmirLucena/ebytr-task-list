@@ -1,4 +1,5 @@
-import express from 'express';
+import express, { Router } from 'express';
+import connectToDatabase from './models/connection';
 
 class App {
   public app: express.Application;
@@ -9,7 +10,12 @@ class App {
   }
 
   public startServer(PORT: String | number = 3001): void {
+    connectToDatabase();
     this.app.listen(PORT, () => console.log(`Server running here http://localhost:${PORT}`));
+  }
+
+  public addRouter(router: Router) {
+    this.app.use(router);
   }
 }
 
