@@ -27,13 +27,14 @@ class TaskModel {
     return result;
   }
 
-  async update(id:string, obj: Task): Promise<Task | null> {
-    const objUpdated = await this.model.findByIdAndUpdate({ _id: id }, obj);
+  async update(id:string, status: string): Promise<Task | null> {
+    const objUpdated = await this.model.findByIdAndUpdate({ _id: id }, { status });
     return objUpdated;
   }
 
   async delete(id: string): Promise<Task | null> {
     const objRemoved = await this.model.findByIdAndDelete({ _id: id });
+    console.log(objRemoved);
     return objRemoved;
   }
 }

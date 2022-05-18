@@ -15,13 +15,13 @@ class TasKService {
   }
 
   public async create(obj: Task): Promise<Task | null | ServiceError> {
-    const item = await this.model.create(obj);
-
     const parsed = TaskSchema.safeParse(obj);
 
     if (!parsed.success) {
       return { error: parsed.error };
     }
+
+    const item = await this.model.create(obj);
 
     return item;
   }
@@ -31,8 +31,8 @@ class TasKService {
     return item;
   }
 
-  public async update(id: string, obj: Task): Promise<Task | null> {
-    const item = await this.model.update(id, obj);
+  public async update(id: string, status: string): Promise<Task | null> {
+    const item = await this.model.update(id, status);
     return item;
   }
 

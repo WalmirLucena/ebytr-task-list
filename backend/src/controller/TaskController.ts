@@ -75,7 +75,7 @@ class TaskController {
     try {
       const { id } = req.params;
 
-      const task = await this.service.update(id, req.body);
+      const task = await this.service.update(id, req.body.status);
       if (!task) {
         return res.status(404)
           .json({ error: this.errors.notFound });
@@ -94,9 +94,11 @@ class TaskController {
     const { id } = req.params;
     try {
       const task = await this.service.delete(id);
-      return task
-        ? res.status(204).json(task)
-        : res.status(404).json({ error: this.errors.notFound });
+      console.log(task, 'controller');
+
+      if (task) return res.status(200).json(task);
+
+      return res.status(404).json({ error: this.errors.notFound });
     } catch (error) {
       return res.status(500).json({ error: this.errors.internal });
     }
