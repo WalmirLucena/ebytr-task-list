@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import TaskController from '../controller/TaskController';
+import updateValidations from '../middlewares/updateValidations';
 
 class MainRouter {
   public router: Router;
@@ -14,7 +15,7 @@ class MainRouter {
     this.router.post('/task', controller.create);
     this.router.get('/task', controller.read);
     this.router.get('/task/:id', controller.readOne);
-    this.router.put('/task/:id', controller.update);
+    this.router.put('/task/:id', updateValidations, controller.update);
     this.router.delete('/task/:id', controller.delete);
   }
 }
