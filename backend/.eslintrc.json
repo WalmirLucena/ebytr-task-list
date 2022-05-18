@@ -24,7 +24,8 @@
               "ts": "never",
               "tsx": "never"
             }
-         ]
+         ],
+         "no-useless-constructor": 0
     },
     "settings": {
         "import/resolver": {
