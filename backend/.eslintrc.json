@@ -25,7 +25,16 @@
               "tsx": "never"
             }
          ],
-         "no-useless-constructor": 0
+         "no-useless-constructor": 0,
+         "no-empty-function": "off",
+         "@typescript-eslint/no-empty-function": ["error"],
+         "no-unused-vars": [
+            "off",
+            {
+                "ignoreRestSiblings": true
+            }
+            ],
+            "no-console": "off"
     },
     "settings": {
         "import/resolver": {

@@ -10,11 +10,7 @@ const TaskSchema = new Schema<TaskDocument>({
 });
 
 class TaskModel {
-  public model;
-
-  constructor(model = mongoose.model('tasks', TaskSchema)) {
-    this.model = model;
-  }
+  constructor(public model = mongoose.model('tasks', TaskSchema)) {}
 
   async create(obj: Task): Promise<Task> {
     const result = await this.model.create({ ...obj });
