@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { Task } from '../interfaces';
+import { Task, update } from '../interfaces';
 
 interface TaskDocument extends Task, Document {}
 
@@ -27,8 +27,8 @@ class TaskModel {
     return result;
   }
 
-  async update(id:string, status: string): Promise<Task | null> {
-    const objUpdated = await this.model.findByIdAndUpdate({ _id: id }, { status });
+  async update(id:string, obj: update): Promise<Task | null> {
+    const objUpdated = await this.model.findByIdAndUpdate({ _id: id }, obj);
     return objUpdated;
   }
 

@@ -75,7 +75,7 @@ class TaskController {
     try {
       const { id } = req.params;
 
-      const task = await this.service.update(id, req.body.status);
+      const task = await this.service.update(id, req.body);
       if (!task) {
         return res.status(404)
           .json({ error: this.errors.notFound });
@@ -94,7 +94,6 @@ class TaskController {
     const { id } = req.params;
     try {
       const task = await this.service.delete(id);
-      console.log(task, 'controller');
 
       if (task) return res.status(200).json(task);
 

@@ -1,5 +1,5 @@
 import { ZodError } from 'zod';
-import { Task, TaskSchema } from '../interfaces';
+import { Task, TaskSchema, update } from '../interfaces';
 import TaskModel from '../models/TaskModel';
 
 export interface ServiceError {
@@ -31,8 +31,8 @@ class TasKService {
     return item;
   }
 
-  public async update(id: string, status: string): Promise<Task | null> {
-    const item = await this.model.update(id, status);
+  public async update(id: string, obj: update): Promise<Task | null> {
+    const item = await this.model.update(id, obj);
     return item;
   }
 
