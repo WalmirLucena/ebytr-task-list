@@ -16,3 +16,8 @@ Desenvolve o backend da aplicação, armazenando a lista de tarefas no Banco de 
 - [ ]  Testes Unitários
 - [ ]  Docker
 - [ ]  Documentar em Swagger
+- [ ]  Deploy no Heroku
+
+## Documentação da API
+
+Foi utilizado o Swagger para a documentação, pode ser acessado na rota `https://ebytr-task.herokuapp.com/api/docs`
