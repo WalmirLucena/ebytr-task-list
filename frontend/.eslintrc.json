@@ -37,6 +37,7 @@
               "ts": "never",
               "tsx": "never"
             }
-         ]
+         ],
+         "react/prefer-stateless-function": [0, { "ignorePureComponents": true }]
     }
 }
