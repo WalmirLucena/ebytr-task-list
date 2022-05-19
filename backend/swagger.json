@@ -1,0 +1,218 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "API de cadastro de tarefas",
+      "description": "Essa API tem como objetivo manipular tarefas para aumentar a produtividade",
+      "termsOfService": "http://localhost:3005/terms",
+      "contact": {
+        "email": "walmirlucena3@gmail.com"
+      },
+      "version": "1.0.0"
+    },
+    "servers": [{
+      "url": "http://localhost:3005/",
+      "description": "API de Tasks"
+    }],
+    "paths": {
+      "/task/": {
+        "post": {
+          "summary": "Cria uma Task",
+          "description": "Essa rota será responsável por registrar uma Task no BD",
+          "tags": ["Create Task"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Task"
+                },
+                "examples": {
+                  "task": {
+                    "value": {
+                      "content": "Fazer desafio Java",
+                      "publishedAt": "05/18/2022",
+                      "status": "Pendente"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "400": {
+              "description": "Erro on create a task"
+            },
+            "500": {
+                "description": "Erro on server"
+              },
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }, "get": {
+        "summary": "Listar Tasks cadastradas",
+        "description": "Essa rota será responsável por listar todas tarefas",
+        "tags": ["Get Task"],
+        "responses": {
+            "500": {
+              "description": "Request Error"
+            },
+            "200": {
+              "description": "OK",
+              "contenct": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Task"
+                  }
+                }
+              }
+            }
+          }
+      },
+      "/task/{id}": {
+        "get": {
+          "summary": "Retorna uma task pelo id",
+          "description": "Essa rota será responsável por retornar uma task a partir do id",
+          "tags": ["GetById"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "description": "id de uma task",
+            "required": true
+          }],
+          "responses": {
+            "404": {
+              "description": "Task not found"
+            },
+            "500": {
+              "description": "Request Error"
+            },
+            "200": {
+              "description": "OK",
+              "contenct": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Task"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+            "summary": "Delete uma task",
+            "description": "Essa rota será responsável por deletar uma task feita por um usuário através do id",
+            "tags": ["DeleteById"],
+            "parameters": [{
+              "name": "id",
+              "in": "path",
+              "description": "id de uma call",
+              "required": true
+            }],
+            "responses": {
+              "404": {
+                "description": "Task not found"
+              },
+              "500": {
+                  "description":"Erro on server"
+              },
+              "200": {
+                "description": "OK",
+                "contenct": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Task"
+                    }
+                  }
+                }
+              }
+            }
+  
+          },
+        "put": {
+            "summary": "Edite uma task",
+            "description": "Essa rota será responsável por alterar o conteúdo e status de uma Task através do id",
+            "tags": ["EditById"],
+            "parameters": [{
+              "name": "id",
+              "in": "path",
+              "description": "id de uma call",
+              "required": true
+            }],
+            "requestBody": {
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TaskEdit"
+                    },
+                    "examples": {
+                      "task": {
+                        "value": {
+                          "content": "Fazer desafios Java e consumir conteudo aceleração",
+                          "status": "Em andamento"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+            "responses": {
+              "404": {
+                "description": "Task not found"
+              },
+              "500": {
+                  "description":"Erro on server"
+              },
+              "200": {
+                "description": "OK",
+                "contenct": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Task"
+                    }
+                  }
+                }
+              }
+            }
+
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "TaskEdit": {
+          "type": "object",
+          "properties": {
+            "content": {
+                "type":"string"
+            },
+            "status":{
+                "type": "number"
+            }
+          }
+        },
+        "Task": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type":"string"
+                },
+                "publishedAt":{
+                    "type": "number"
+                },
+                "status":{
+                    "type": "number"
+                }
+            }
+        }
+      }
+    }
+    
+  }
