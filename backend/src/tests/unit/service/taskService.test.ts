@@ -1,12 +1,12 @@
 import { expect } from 'chai';
 import * as Sinon from 'sinon';
 import { Task as ITask } from '../../../interfaces';
-import TaskModel from '../../../models/TaskModel';
+import TasKService from '../../../services/TaskService';
 import { taskUpdated, validTask, validTaskArray } from '../../mocks/taskMocks';
 
 describe('Task Model Test', () => {
 
-  let Task = new TaskModel();
+  let Task = new TasKService();
   describe('Create a Task with correct data', () => {
     before(() => {
         Sinon.stub(Task.model, 'create').resolves(validTask as ITask);
@@ -26,7 +26,7 @@ describe('Task Model Test', () => {
 
 describe('Get Tasks with correct data', () => {
   before(() => {
-      Sinon.stub(Task.model, 'find').resolves(validTaskArray as ITask[]);
+      Sinon.stub(Task.model, 'read').resolves(validTaskArray as ITask[]);
   });
 
 
@@ -43,7 +43,7 @@ describe('Get Tasks with correct data', () => {
   describe('List one Task', () => {
     describe('When the Task exist', () => {
         before(() => {
-            Sinon.stub(Task.model, 'findOne').resolves(validTask as any);
+            Sinon.stub(Task.model, 'readOne').resolves(validTask as any);
         });
 
         after(() => {
@@ -58,7 +58,7 @@ describe('Get Tasks with correct data', () => {
 
     describe('When the Task doesnt exist', () => {
         before(() => {
-            Sinon.stub(Task.model, 'findOne').resolves(null);
+            Sinon.stub(Task.model, 'readOne').resolves(null);
         });
 
         after(() => {
@@ -76,7 +76,7 @@ describe('Get Tasks with correct data', () => {
 describe('Update an item on the task list', () => {
     describe('When exist the task', () => {
         before(() => {
-        Sinon.stub(Task.model, 'findByIdAndUpdate').resolves(validTask as ITask);
+        Sinon.stub(Task.model, 'update').resolves(validTask as ITask);
     });
 
     after(() => {
@@ -93,7 +93,7 @@ describe('Update an item on the task list', () => {
 describe('Delete one Task by Id', () => {
     describe('When the task exist', () => {
         before(() => {
-        Sinon.stub(Task.model, 'findByIdAndDelete').resolves(validTask as ITask);
+        Sinon.stub(Task.model, 'delete').resolves(validTask as ITask);
     });
 
     after(() => {
