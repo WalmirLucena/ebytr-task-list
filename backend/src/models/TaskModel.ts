@@ -34,7 +34,6 @@ class TaskModel {
 
   async delete(id: string): Promise<Task | null> {
     const objRemoved = await this.model.findByIdAndDelete({ _id: id });
-    console.log(objRemoved);
     return objRemoved;
   }
 }
