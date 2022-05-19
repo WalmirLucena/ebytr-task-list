@@ -64,4 +64,4 @@ npm run test:coverage
 
 ## Documentação da API
 
-Foi utilizado o Swagger para a documentação, pode ser acessado na rota `https://ebytr-task.herokuapp.com/api/docs`
+Foi utilizado o Swagger para a documentação, pode ser acessado na rota https://ebytr-task.herokuapp.com/api/docs
