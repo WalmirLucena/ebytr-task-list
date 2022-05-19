@@ -18,6 +18,24 @@ Desenvolve o backend da aplicação, armazenando a lista de tarefas no Banco de 
 - [ ]  Documentar em Swagger
 - [ ]  Deploy no Heroku
 
+## Executando a aplicação
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/WalmirLucena/ebytr-task-list
+```
+Navegue até o diretório do projeto:
+
+```bash
+cd backend
+```
+Iniciando a aplicação:
+
+```bash
+npm start
+```
+
 ## Documentação da API
 
 Foi utilizado o Swagger para a documentação, pode ser acessado na rota `https://ebytr-task.herokuapp.com/api/docs`
