@@ -4,9 +4,16 @@ const api = axios.create({
   baseURL: `https://ebytr-task.herokuapp.com ||${process.env.REACT_APP_API_PORT}`,
 });
 
-const requestNewCall = async (endpoint, body) => {
-  const { data } = await api.post(endpoint, body);
-  return data;
+export const request = async (endpoint, body, method) => {
+  try {
+    const response = await api[method](endpoint, body);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      return error.response.data;
+    }
+    return new Error();
+  }
 };
 
-export default { requestNewCall };
+export default api;
