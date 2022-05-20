@@ -1,9 +1,18 @@
 import React from 'react';
 import Input from '../Components/Inputs';
+import { request } from '../Services/request';
 
 function Home() {
+  const createTask = async (data) => {
+    const endpoint = '/task';
+    const body = { ...data, publishedAt: new Date() };
+    console.log(body);
+    const response = await request(endpoint, body, 'post');
+    console.log(response);
+  };
+
   const getValues = (data) => {
-    console.log(data);
+    createTask(data);
   };
 
   return (
