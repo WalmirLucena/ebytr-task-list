@@ -5,7 +5,7 @@ import { update } from '../interfaces';
 
 const updateSchema = Joi.object().keys({
   content: Joi.string().required(),
-  status: Joi.string().required().valid('A começar', 'Em desenvolvimento', 'Pendente', 'Finalizado'),
+  status: Joi.string().required().valid('A começar', 'Em andamento', 'Pendente', 'Finalizado'),
 });
 
 const updateValidations = async (
