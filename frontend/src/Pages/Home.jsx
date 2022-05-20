@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Input from '../Components/Inputs';
 import { request } from '../Services/request';
+import trashCan from '../Images/trash-can-regular.svg';
+import edit from '../Images/edit-regular.svg';
 
 function Home() {
   const [task, setTask] = useState([]);
@@ -48,8 +50,17 @@ function Home() {
                 <td>{content}</td>
                 <td>{publishedAt}</td>
                 <td>{status}</td>
-                <th>Deletar</th>
-                <th>Editar</th>
+                <th>
+                  <div className="delete">
+                    <img className="w-6" src={trashCan} alt="icon to remove call" />
+                  </div>
+                </th>
+                <th>
+                  <div className="edit">
+                    <img className="w-6" src={edit} alt="icon to remove call" />
+                  </div>
+
+                </th>
               </tr>
             ))}
           </tbody>
