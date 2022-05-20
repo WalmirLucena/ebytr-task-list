@@ -5,14 +5,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "plugin:import/typescript" 
+        "airbnb"
     ],
-    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -21,23 +15,11 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react",
-        "react-hooks",
-        "@typescript-eslint",
-        "prettier"
+        "react"
     ],
     "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-        "import/extensions": [
-            "error",
-            "ignorePackages",
-            {
-              "js": "never",
-              "jsx": "never",
-              "ts": "never",
-              "tsx": "never"
-            }
-         ],
-         "react/prefer-stateless-function": [0, { "ignorePureComponents": true }]
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "import/no-unresolved": 0,
+        "no-console": 0
     }
 }
