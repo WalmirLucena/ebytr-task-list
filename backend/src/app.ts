@@ -9,6 +9,7 @@ class App {
     this.app = express();
     this.app.use(express.json());
     this.app.use(cors());
+    
   }
 
   public startServer(PORT: String | number = 3001): void {
