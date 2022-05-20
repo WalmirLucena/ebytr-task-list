@@ -5,7 +5,7 @@ import trashCan from '../Images/trash-can-regular.svg';
 import edit from '../Images/edit-regular.svg';
 
 function Home() {
-  const [task, setTask] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState(false);
 
   const createTask = async (data) => {
@@ -18,7 +18,13 @@ function Home() {
   const getTask = async () => {
     const endpoint = '/task';
     const response = await request(endpoint, {}, 'get');
-    setTask(response);
+    setTasks(response);
+  };
+
+  const deleteTask = async ({ _id }) => {
+    const endpoint = `/task/${_id}`;
+    await request(endpoint, {}, 'delete');
+    setNewTask(!newTask);
   };
 
   const getValues = (data) => {
@@ -45,15 +51,15 @@ function Home() {
             <th>Editar</th>
           </thead>
           <tbody>
-            {task.map(({ content, publishedAt, status }) => (
-              <tr key={publishedAt}>
-                <td>{content}</td>
-                <td>{publishedAt}</td>
-                <td>{status}</td>
+            {tasks.map((task) => (
+              <tr key={task.publishedAt}>
+                <td>{task.content}</td>
+                <td>{task.publishedAt}</td>
+                <td>{task.status}</td>
                 <th>
-                  <div className="delete">
+                  <button type="button" className="delete" onClick={() => deleteTask(task)}>
                     <img className="w-6" src={trashCan} alt="icon to remove call" />
-                  </div>
+                  </button>
                 </th>
                 <th>
                   <div className="edit">
